@@ -2,21 +2,21 @@ import { ThunkAction, ThunkDispatch } from 'redux-thunk'
 import { ActionsUnion, createAction } from '../utils'
 import { AnyAction } from 'redux'
 import { Actions as CommonActions } from '../common/actions'
-import { load, LoadingData } from '../../services'
+import { loadPost, PostData } from '../../services'
 
-export const SET_TOKEN = 'SET_TOKEN'
+export const SET_POST = 'SET_POST'
 
 export const Actions = {
-  setToken: (payload: LoadingData) => createAction(SET_TOKEN, payload)
+  setPost: (payload: PostData) => createAction(SET_POST, payload)
 }
 
 export const AsyncActions = {
-  login: (userName: string, password: string): ThunkAction<Promise<LoadingData | void>, {}, {}, AnyAction> => {
-    return async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<LoadingData | void> => {
+  getPost: (): ThunkAction<Promise<PostData | void>, {}, {}, AnyAction> => {
+    return async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<PostData | void> => {
       dispatch(CommonActions.setLoading(true))
       try {
-        const test = await load()
-        dispatch(Actions.setToken(test))
+        const test = await loadPost()
+        dispatch(Actions.setPost(test))
         dispatch(CommonActions.setLoading(false))
         return test
       } catch(err) {

@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux'
-import { CounterReducer, CommonReducer, AuthReducer } from './'
+import { CounterReducer, CommonReducer, PostReducer } from './'
 
 export interface AppState {
-  auth: AuthReducer.State,
+  posts: PostReducer.State,
   counter: CounterReducer.State,
   common: CommonReducer.State
 }
 
 export const rootReducer = combineReducers<AppState>({
-  auth: AuthReducer.reducer,
+  posts: PostReducer.reducer,
   counter: CounterReducer.reducer,
   common: CommonReducer.reducer
 })

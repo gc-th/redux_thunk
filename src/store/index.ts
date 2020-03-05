@@ -1,9 +1,9 @@
 import * as CounterReducer from './counter/reducers'
 import * as CommonReducer from './common/reducers'
-import * as AuthReducer from './auth/reducers'
+import * as PostReducer from './posts/reducers'
 
 export {
-  AuthReducer,
+  PostReducer,
   CounterReducer,
   CommonReducer
 }
